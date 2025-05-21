@@ -1,0 +1,6 @@
+@HttpRestUserProfile_HostAddress = http://localhost:5216
+
+GET {{HttpRestUserProfile_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

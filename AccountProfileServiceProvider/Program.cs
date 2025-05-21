@@ -1,0 +1,15 @@
+using AccountProfileServiceProvider.Contexts;
+using AccountProfileServiceProvider.Repos;
+using Microsoft.EntityFrameworkCore;
+using AccountProfileServiceProvider.Services;
+using AccountProfileServiceProvider;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddGrpc();
+builder.Services.AddDbContext<UserProfileContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
+builder.Services.AddScoped<UserProfileRepo>();
+builder.Services.AddHostedService<AzureBusListener>();
+builder.Services.AddScoped<UserProfileServices>();
+var app = builder.Build();
+app.MapGrpcService<ProtoServices>();
+app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+app.Run();
