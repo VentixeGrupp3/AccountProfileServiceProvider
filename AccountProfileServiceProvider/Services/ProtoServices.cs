@@ -39,6 +39,7 @@ namespace AccountProfileServiceProvider.Services
                 LastName = entity.LastName,
                 PhoneNumber = entity.PhoneNumber,
                 StreetName = entity.StreetName,
+                PostalCode = entity.PostalCode,
                 City = entity.City,
             };
            
