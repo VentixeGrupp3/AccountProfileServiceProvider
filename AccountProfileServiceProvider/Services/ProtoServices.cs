@@ -17,6 +17,7 @@ namespace AccountProfileServiceProvider.Services
             return new getUserProfileByIdResponse()
             {
                 AppUserId = entity.AppUserId,
+                Id = entity.Id,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 PhoneNumber = entity.PhoneNumber,
@@ -35,6 +36,7 @@ namespace AccountProfileServiceProvider.Services
             return new getUserProfileByIdResponse()
             {
                 AppUserId = entity.AppUserId,
+                Id = entity.Id,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 PhoneNumber = entity.PhoneNumber,
