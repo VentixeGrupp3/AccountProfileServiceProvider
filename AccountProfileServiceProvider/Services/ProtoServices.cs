@@ -2,6 +2,7 @@
 using AccountProfileServiceProvider.Protos;
 using Grpc.Core;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace AccountProfileServiceProvider.Services
 {
@@ -85,6 +86,35 @@ namespace AccountProfileServiceProvider.Services
                 City = entity.City
             };
              
+        }
+
+        public async override Task<updateUserProfileResponse> updateUserProfile(updateUserProfileRequest request, ServerCallContext context)
+        {
+            var dto = new UpdateAcountProfileForm()
+            {
+                Id = request.Id,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                PhoneNumber = request.PhoneNumber,
+                StreetName = request.StreetName,
+                PostalCode = request.PostalCode,
+                City = request.City,
+            };
+            var response  = await _userProfileServices.UpdateUserProfile(dto);
+            if (response == null)
+                return null;
+
+
+            return new updateUserProfileResponse()
+            {
+                Id = response.Id,
+                FirstName = response.FirstName,
+                LastName = response.LastName,
+                PhoneNumber = response.PhoneNumber,
+                StreetName = response.StreetName,
+                PostalCode = response.PostalCode,
+                City = response.City
+            };
         }
 
 
