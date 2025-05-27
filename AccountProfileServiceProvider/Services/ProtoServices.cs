@@ -102,7 +102,7 @@ namespace AccountProfileServiceProvider.Services
             };
             var response  = await _userProfileServices.UpdateUserProfile(dto);
             if (response == null)
-                return null;
+                throw new RpcException(new Status(StatusCode.NotFound, "User profile not found"));
 
 
             return new updateUserProfileResponse()

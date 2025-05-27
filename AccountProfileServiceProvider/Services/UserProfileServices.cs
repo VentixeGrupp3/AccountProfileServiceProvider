@@ -36,7 +36,7 @@ namespace AccountProfileServiceProvider.Services
 
         public async Task<UserProfileEntity?> UpdateUserProfile(UpdateAcountProfileForm? formData)
         {
-            var entity = await _repo.GetProfileByUserId(formData.Id);
+            var entity = await _repo.GetProfileById(formData.Id);
             if (entity == null) 
                 return null;
                 entity.FirstName = formData.FirstName;
